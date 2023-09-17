@@ -43,7 +43,8 @@
           <mat-label class="label">Data de nascimento</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="birthday" placeholder="06/04/2001" [min]="minDate" [max]="maxDate" required>
           <mat-hint>DD/MM/AAAA</mat-hint>
-          <mat-error>Digite sua data de nascimemto</mat-error>
+          <mat-error *ngIf="registerForm.controls['birthday']?.hasError('required')">Digite sua data de nascimemto</mat-error>
+          <mat-error *ngIf="registerForm.controls['birthday']?.hasError('matDatepickerMax') || registerForm.controls['birthday']?.hasError('invalid')">Digite uma data válida</mat-error>
         </mat-form-field>
       </div>
 
