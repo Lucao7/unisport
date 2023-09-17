@@ -28,14 +28,12 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(
-      environment.authUrl + '/login',
-      {
-        email,
-        password,
-      },
-      httpOptions
-    ).pipe(map(data => {
+    const data = {
+      "email": email,
+      "password": password,
+    }
+    return this.http.post(environment.authUrl + '/login', data, httpOptions)
+    .pipe(map(data => {
       this._isLoggedIn.next(true);
       this.storageService.setToken(data);
     }));
@@ -49,9 +47,7 @@ export class AuthService {
       "dataNascimento": birthday,
       "password": password,
     }
-    return this.http.post(environment.authUrl, data,
-      httpOptions
-    );
+    return this.http.post(environment.authUrl, data, httpOptions);
   }
 
   logout()/*: Observable<any>*/ {
