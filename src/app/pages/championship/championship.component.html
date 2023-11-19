@@ -1,5 +1,8 @@
 <div class="container">
-  <table class="table table-striped">
+  <div class="row mt-3">
+    <h1><b>Campeonatos</b></h1>
+  </div>
+  <table class="table table-striped mt-3">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -16,14 +19,31 @@
         <td scope="row">{{ element.qtd_times_inscritos }}</td>
         <td scope="row">{{ element.esporte }}</td>
         <td scope="row">
-          <a href=""><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon></a>
-          <a href=""><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon></a>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="edit"
+            class="link">
+            </mat-icon>
+            <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="delete"
+            class="link">
+            </mat-icon>
+            <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="more_vert"
+            class="link">
+          </mat-icon>
         </td>
       </tr>
     </tbody>
   </table>
-
-  <button mat-fab disabled aria-label="Example icon button with a heart icon">
-    <mat-icon>Add</mat-icon>
-  </button>
+  <div class="row justify-content-end">
+    <button mat-icon-button aria-label="Adicionar Time">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>
