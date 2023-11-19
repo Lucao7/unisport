@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Faculdades</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="colleges$ | async as colleges; else loading">
+      <table mat-table="" [dataSource]="colleges" class="mat-elevation-z3">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let college">{{ college.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let college">{{ college.nome }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <ng-template #loading>
+      <div class="spinner">
+        <mat-progress-spinner color="primary"></mat-progress-spinner>
+      </div>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
