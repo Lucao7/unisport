@@ -1,0 +1,29 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Quantidade Times Inscritos</th>
+        <th scope="col">Esporte</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let element of dataSource">
+        <td scope="row">{{ element.id }}</td>
+        <td scope="row">{{ element.descricao }}</td>
+        <td scope="row">{{ element.qtd_times_inscritos }}</td>
+        <td scope="row">{{ element.esporte }}</td>
+        <td scope="row">
+          <a href=""><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon></a>
+          <a href=""><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button mat-fab disabled aria-label="Example icon button with a heart icon">
+    <mat-icon>Add</mat-icon>
+  </button>
+</div>
