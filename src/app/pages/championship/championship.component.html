@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row mt-3">
+    <h1><b>Campeonatos</b></h1>
+  </div>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Quantidade Times Inscritos</th>
+        <th scope="col">Esporte</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let element of dataSource">
+        <td scope="row">{{ element.id }}</td>
+        <td scope="row">{{ element.descricao }}</td>
+        <td scope="row">{{ element.qtd_times_inscritos }}</td>
+        <td scope="row">{{ element.esporte }}</td>
+        <td scope="row">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="edit"
+            class="link">
+            </mat-icon>
+            <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="delete"
+            class="link">
+            </mat-icon>
+            <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="more_vert"
+            class="link">
+          </mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row justify-content-end">
+    <button mat-icon-button aria-label="Adicionar Time">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
