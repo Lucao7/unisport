@@ -1,25 +1,23 @@
 <div class="container">
   <div class="row mt-3">
-    <h1><b>Partidas</b></h1>
+    <h1><b>Partidas - Campeonato X</b></h1>
   </div>
   <table class="table table-striped mt-3 mat-elevation-z2">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Campeonato</th>
         <th scope="col">Time 1</th>
         <th scope="col">Time 2</th>
-        <th scope="col">Resultado</th>
+        <th scope="col">Vencedor</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let element of dataSource">
         <td scope="row">{{ element.id }}</td>
-        <td scope="row">{{ element.campeonato }}</td>
         <td scope="row">{{ element.time1 }}</td>
         <td scope="row">{{ element.time2 }}</td>
-        <td scope="row">{{ element.resultado }}</td>
+        <td scope="row">{{ element.vencedor }}</td>
         <td scope="row">
           <mat-icon aria-label="Edit" class="link">edit</mat-icon>
           <mat-icon aria-label="Delete" class="link">delete</mat-icon>
