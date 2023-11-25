@@ -79,12 +79,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./championship.component.scss'],
 })
 export class ChampionshipComponent {
-  constructor(public modal: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
 
-  openModalCreateChampionship(): void {
-    const modal = this.modal.open(DialogCreateChampionshipComponent);
+  openDialogCreateChampionship(): void {
+    const DIALOG = this.dialog.open(DialogCreateChampionshipComponent);
 
-    modal.afterClosed().subscribe((result) => {
+    DIALOG.afterClosed().subscribe((result) => {
       console.log('O modal foi aberto');
     });
   }
