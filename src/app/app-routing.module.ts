@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'profile', loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule) },
   { path: 'championship', loadChildren: () => import('./pages/championship/championship.module').then(m => m.ChampionshipModule) },
   { path: 'match', loadChildren: () => import('./pages/match/match.module').then(m => m.MatchModule) },
-  { path: 'team', loadChildren: () => import('./pages/team/team.module').then(m => m.TeamModule) }
+  { path: 'team', loadChildren: () => import('./pages/team/team.module').then(m => m.TeamModule) },
+  { path: 'sports', loadChildren: () => import('./pages/sports/sports.module').then(m => m.SportsModule) }
 ];
 
 @NgModule({
