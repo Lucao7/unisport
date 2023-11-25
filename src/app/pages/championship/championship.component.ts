@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DialogCreateChampionshipComponent } from './dialog-create-championship/dialog-create-championship.component';
+import { DialogEditChampionshipComponent } from './dialog-edit-championship/dialog-edit-championship.component';
 
 export interface PeriodicElement {
   id: number;
@@ -82,9 +83,22 @@ export class ChampionshipComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialogCreateChampionship(): void {
-    const DIALOG = this.dialog.open(DialogCreateChampionshipComponent);
+    const DIALOG_CREATE = this.dialog.open(
+      DialogCreateChampionshipComponent
+    );
 
-    DIALOG.afterClosed().subscribe((result) => {
+    DIALOG_CREATE.afterClosed().subscribe((result) => {
+      console.log('O modal foi aberto');
+    });
+  }
+
+
+  openDialogEditChampionship(): void {
+    const DIALOG_EDIT = this.dialog.open(
+      DialogEditChampionshipComponent
+    );
+
+    DIALOG_EDIT.afterClosed().subscribe((result) => {
       console.log('O modal foi aberto');
     });
   }

@@ -5,12 +5,14 @@ import { AngularMaterialModule } from '../../angular-material/angular-material.m
 import { ChampionshipRoutingModule } from './championship-routing.module';
 import { ChampionshipComponent } from './championship.component';
 import { DialogCreateChampionshipComponent } from './dialog-create-championship/dialog-create-championship.component';
+import { DialogEditChampionshipComponent } from './dialog-edit-championship/dialog-edit-championship.component';
 
 
 @NgModule({
   declarations: [
     ChampionshipComponent,
-    DialogCreateChampionshipComponent
+    DialogCreateChampionshipComponent,
+    DialogEditChampionshipComponent
   ],
   imports: [
     CommonModule,

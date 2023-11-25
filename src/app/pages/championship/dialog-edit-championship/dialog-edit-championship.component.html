@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 mat-dialog-title>Criar campeonato</h2>
+  <h2 mat-dialog-title>Editar campeonato</h2>
   <mat-dialog-content>
     <div class="row-cols-1">
       <mat-form-field>
@@ -16,47 +16,47 @@
 
       <mat-form-field>
         <mat-label>Data Início</mat-label>
-        <input matInput [matDatepicker]="picker1" />
+        <input matInput [matDatepicker]="picker5" />
         <mat-datepicker-toggle
           matIconSuffix
-          [for]="picker1"
+          [for]="picker5"
         ></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
+        <mat-datepicker #picker5></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Data Final</mat-label>
-        <input matInput [matDatepicker]="picker2" />
+        <input matInput [matDatepicker]="picker6" />
         <mat-datepicker-toggle
           matIconSuffix
-          [for]="picker2"
+          [for]="picker6"
         ></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
+        <mat-datepicker #picker6></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Data Início Inscrições</mat-label>
-        <input matInput [matDatepicker]="picker3" />
+        <input matInput [matDatepicker]="picker7" />
         <mat-datepicker-toggle
           matIconSuffix
-          [for]="picker3"
+          [for]="picker7"
         ></mat-datepicker-toggle>
-        <mat-datepicker #picker3></mat-datepicker>
+        <mat-datepicker #picker7></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Data Fim Inscrições</mat-label>
-        <input matInput [matDatepicker]="picker4" />
+        <input matInput [matDatepicker]="picker8" />
         <mat-datepicker-toggle
           matIconSuffix
-          [for]="picker4"
+          [for]="picker8"
         ></mat-datepicker-toggle>
-        <mat-datepicker #picker4></mat-datepicker>
+        <mat-datepicker #picker8></mat-datepicker>
       </mat-form-field>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions class="justify-content-end">
     <button mat-button mat-dialog-close>Cancelar</button>
-    <button mat-button>Confirmar</button>
+    <button mat-button>Editar</button>
   </mat-dialog-actions>
 </div>
