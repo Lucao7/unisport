@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { DialogCreateChampionshipComponent } from './dialog-create-championship/dialog-create-championship.component';
 import { DialogEditChampionshipComponent } from './dialog-edit-championship/dialog-edit-championship.component';
+import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/dialog-delete-championship.component';
 
 export interface PeriodicElement {
   id: number;
@@ -99,6 +100,17 @@ export class ChampionshipComponent {
     );
 
     DIALOG_EDIT.afterClosed().subscribe((result) => {
+      console.log('O modal foi aberto');
+    });
+  }
+
+
+  openDialogDeleteChampionship(): void {
+    const DIALOG_DELETE = this.dialog.open(
+      DialogDeleteChampionshipComponent
+    );
+
+    DIALOG_DELETE.afterClosed().subscribe((result) => {
       console.log('O modal foi aberto');
     });
   }

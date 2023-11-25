@@ -6,13 +6,15 @@ import { ChampionshipRoutingModule } from './championship-routing.module';
 import { ChampionshipComponent } from './championship.component';
 import { DialogCreateChampionshipComponent } from './dialog-create-championship/dialog-create-championship.component';
 import { DialogEditChampionshipComponent } from './dialog-edit-championship/dialog-edit-championship.component';
+import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/dialog-delete-championship.component';
 
 
 @NgModule({
   declarations: [
     ChampionshipComponent,
     DialogCreateChampionshipComponent,
-    DialogEditChampionshipComponent
+    DialogEditChampionshipComponent,
+    DialogDeleteChampionshipComponent
   ],
   imports: [
     CommonModule,
