@@ -8,7 +8,7 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 1, descricao: 'campeonato 1', 'qtd_times_inscritos': '5/10', esporte: 'Futebol' },
+  { id: 1, descricao: 'campeonato 1', qtd_times_inscritos: '5/10', esporte: 'Futebol' },
   { id: 2, descricao: 'campeonato 2', qtd_times_inscritos: '4/10', esporte: 'Futebol' },
   { id: 3, descricao: 'campeonato 3', qtd_times_inscritos: '3/10', esporte: 'Futebol' },
   { id: 4, descricao: 'campeonato 4', qtd_times_inscritos: '2/10', esporte: 'Futebol' },
