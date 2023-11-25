@@ -40,15 +40,25 @@
             aria-label="Example home icon"
             fontIcon="more_vert"
             class="link"
+            [matMenuTriggerFor]="menu"
           >
           </mat-icon>
-
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>add_box</mat-icon>
+              <span>Inscrever Time</span>
+            </button>
+          </mat-menu>
         </td>
       </tr>
     </tbody>
   </table>
   <div class="row justify-content-end">
-    <button mat-icon-button aria-label="Adicionar Time" (click)="openDialogCreateChampionship()">
+    <button
+      mat-icon-button
+      aria-label="Adicionar Time"
+      (click)="openDialogCreateChampionship()"
+    >
       <mat-icon>add</mat-icon>
     </button>
   </div>
