@@ -7,6 +7,7 @@ import { ChampionshipComponent } from './championship.component';
 import { DialogCreateChampionshipComponent } from './dialog-create-championship/dialog-create-championship.component';
 import { DialogEditChampionshipComponent } from './dialog-edit-championship/dialog-edit-championship.component';
 import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/dialog-delete-championship.component';
+import { DialogRegisterTeamChampionshipComponent } from './dialog-register-team-championship/dialog-register-team-championship.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/
     ChampionshipComponent,
     DialogCreateChampionshipComponent,
     DialogEditChampionshipComponent,
-    DialogDeleteChampionshipComponent
+    DialogDeleteChampionshipComponent,
+    DialogRegisterTeamChampionshipComponent
   ],
   imports: [
     CommonModule,
