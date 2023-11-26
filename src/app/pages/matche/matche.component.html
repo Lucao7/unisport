@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row mt-3">
+    <h1><b>Partidas</b></h1>
+  </div>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Time A</th>
+        <th scope="col">Time B</th>
+        <th scope="col">Vencedor</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">3</td>
+        <td scope="row">Nome do time A</td>
+        <td scope="row">Nome do time B</td>
+        <td scope="row">-</td>
+        <td scope="row">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="more_vert"
+            class="link"
+            [matMenuTriggerFor]="menu"
+          >
+          </mat-icon>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openDialogDefineWinner()">
+              <mat-icon>edit</mat-icon>
+              <span>Definir Vencedor</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
