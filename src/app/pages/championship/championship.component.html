@@ -19,15 +19,57 @@
         <td scope="row">{{ element.qtd_times_inscritos }}</td>
         <td scope="row">{{ element.esporte }}</td>
         <td scope="row">
-          <mat-icon aria-label="Edit" class="link">edit</mat-icon>
-          <mat-icon aria-label="Delete" class="link">delete</mat-icon>
-          <mat-icon aria-label="Opções" class="link">more_vert</mat-icon>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="edit"
+            class="link"
+            (click)="openDialogEditChampionship()"
+          >
+          </mat-icon>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="delete"
+            class="link"
+            (click)="openDialogDeleteChampionship()"
+          >
+          </mat-icon>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="more_vert"
+            class="link"
+            [matMenuTriggerFor]="menu"
+          >
+          </mat-icon>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openDialogRegisterTeamChampionship()">
+              <mat-icon>add_box</mat-icon>
+              <span>Inscrever Time</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>table_view</mat-icon>
+              <span>Ver Partidas</span>
+            </button>
+          </mat-menu>
         </td>
       </tr>
     </tbody>
   </table>
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
   <div class="row justify-content-end">
-    <button mat-icon-button aria-label="Adicionar Time">
+    <button
+      mat-icon-button
+      aria-label="Adicionar Time"
+      (click)="openDialogCreateChampionship()"
+    >
       <mat-icon>add</mat-icon>
     </button>
   </div>

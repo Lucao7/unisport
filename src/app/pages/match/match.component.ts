@@ -1,30 +1,21 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
-export interface PeriodicElement {
-  id: number;
-  time1: string;
-  time2: string;
-  vencedor: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 1, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-  { id: 2, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-  { id: 3, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-  { id: 4, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-  { id: 5, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-  { id: 6, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-  { id: 7, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-  { id: 8, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-  { id: 9, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-  { id: 10, time1: 'Time A', time2: 'Time B', vencedor: '-' },
-];
+import { DialogDefineWinnerComponent } from './dialog-define-winner/dialog-define-winner.component';
 
 @Component({
   selector: 'app-match',
   templateUrl: './match.component.html',
-  styleUrls: ['./match.component.scss']
+  styleUrls: ['./match.component.scss'],
 })
 export class MatchComponent {
-  dataSource = ELEMENT_DATA;
+  constructor(public dialog: MatDialog) {}
+
+  openDialogDefineWinner(): void {
+    const DIALOG_DEFINE_WINNER = this.dialog.open(DialogDefineWinnerComponent);
+
+    DIALOG_DEFINE_WINNER.afterClosed().subscribe((result) => {
+      console.log('O modal foi aberto');
+    });
+  }
 }

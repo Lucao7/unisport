@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row mt-3">
+    <h1><b>Esportes</b></h1>
+  </div>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Descrição</th>
+        <th scope="col" class="text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">1</td>
+        <td scope="row">Futebol</td>
+        <td scope="row" class="text-center">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="edit"
+            class="link"
+            (click)="openDialogEditSport()"
+          >
+          </mat-icon>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="delete"
+            class="link"
+            (click)="openDialogDeleteSport()"
+          >
+          </mat-icon>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="row">2</td>
+        <td scope="row">Basquete</td>
+        <td scope="row" class="text-center">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="edit"
+            class="link"
+            (click)="openDialogEditSport()"
+          >
+          </mat-icon>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="delete"
+            class="link"
+            (click)="openDialogDeleteSport()"
+          >
+          </mat-icon>
+        </td>
+      </tr>
+
+      <tr>
+        <td scope="row">3</td>
+        <td scope="row">Volei</td>
+        <td scope="row" class="text-center">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="edit"
+            class="link"
+            (click)="openDialogEditSport()"
+          >
+          </mat-icon>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="delete"
+            class="link"
+            (click)="openDialogDeleteSport()"
+          >
+          </mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+  <div class="row justify-content-end">
+    <button mat-icon-button aria-label="Adicionar Esporte" (click)="openDialogCreateSport()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatchComponent } from './match.component';
+import { SportComponent } from './sport.component';
 
-describe('MatcheComponent', () => {
-  let component: MatchComponent;
-  let fixture: ComponentFixture<MatchComponent>;
+describe('SportComponent', () => {
+  let component: SportComponent;
+  let fixture: ComponentFixture<SportComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MatchComponent]
+      declarations: [SportComponent]
     });
-    fixture = TestBed.createComponent(MatchComponent);
+    fixture = TestBed.createComponent(SportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -10,10 +10,9 @@ const routes: Routes = [
   { path: 'resetpass', loadChildren: () => import('./pages/resetpass/resetpass.module').then(m => m.ResetpassModule) },
   { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'profile', loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule) },
-  { path: 'championship', loadChildren: () => import('./pages/championship/championship.module').then(m => m.ChampionshipModule) },
+  { path: 'sport', loadChildren: () => import('./pages/sport/sport.module').then(m => m.SportModule) },
   { path: 'match', loadChildren: () => import('./pages/match/match.module').then(m => m.MatchModule) },
-  { path: 'team', loadChildren: () => import('./pages/team/team.module').then(m => m.TeamModule) },
-  { path: 'sports', loadChildren: () => import('./pages/sports/sports.module').then(m => m.SportsModule) }
+  { path: 'championship', loadChildren: () => import('./pages/championship/championship.module').then(m => m.ChampionshipModule) }
 ];
 
 @NgModule({
