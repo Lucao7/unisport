@@ -4,11 +4,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogDefineWinnerComponent } from './dialog-define-winner/dialog-define-winner.component';
 
 @Component({
-  selector: 'app-matche',
-  templateUrl: './matche.component.html',
-  styleUrls: ['./matche.component.scss'],
+  selector: 'app-match',
+  templateUrl: './match.component.html',
+  styleUrls: ['./match.component.scss'],
 })
-export class MatcheComponent {
+export class MatchComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialogDefineWinner(): void {
