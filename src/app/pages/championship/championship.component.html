@@ -13,11 +13,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let element of dataSource">
+      <tr *ngFor="let element of championships">
         <td scope="row">{{ element.id }}</td>
-        <td scope="row">{{ element.descricao }}</td>
-        <td scope="row">{{ element.qtd_times_inscritos }}</td>
-        <td scope="row">{{ element.esporte }}</td>
+        <td scope="row">{{ element.nome }}</td>
+        <td scope="row">{{ element.inscricao.equipes?.length }}</td>
+        <td scope="row">{{ element.modalidadeCampeonato.descricao }}</td>
         <td scope="row">
           <mat-icon
             aria-hidden="false"
