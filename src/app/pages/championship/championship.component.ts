@@ -17,19 +17,28 @@ import { ChampionshipService } from './../../_services/championship/championship
 })
 export class ChampionshipComponent implements OnInit {
   championships: Championship[] = [];
+  championship = {} as Championship;
 
   constructor(
     private championshipService: ChampionshipService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {}
 
   listChampionship(): void {
-    this.championshipService.listChampionship(1, 1, false).subscribe({
+    this.championshipService.listChampionship().subscribe({
       next: (data) => {
         this.championships = data;
       },
       error: (error) => console.error(error),
     });
+  }
+
+  getChampionshipById(id: number) {
+    this.championshipService.getChampionshipById(id).subscribe(championshipRow => {
+      this.openDialogEditChampionship(championshipRow);
+    })
+
+    return this.championship;
   }
 
   ngOnInit(): void {
@@ -44,16 +53,20 @@ export class ChampionshipComponent implements OnInit {
     });
   }
 
-  openDialogEditChampionship(): void {
-    const DIALOG_EDIT = this.dialog.open(DialogEditChampionshipComponent);
+  openDialogEditChampionship(championship: any): void {
+    const DIALOG_EDIT = this.dialog.open(DialogEditChampionshipComponent, {
+      data: championship
+    });
 
     DIALOG_EDIT.afterClosed().subscribe((result) => {
       console.log('O modal foi aberto');
     });
   }
 
-  openDialogDeleteChampionship(): void {
-    const DIALOG_DELETE = this.dialog.open(DialogDeleteChampionshipComponent);
+  openDialogDeleteChampionship(id: number): void {
+    const DIALOG_DELETE = this.dialog.open(DialogDeleteChampionshipComponent, {
+      data: id
+    });
 
     DIALOG_DELETE.afterClosed().subscribe((result) => {
       console.log('O modal foi aberto');
@@ -69,4 +82,5 @@ export class ChampionshipComponent implements OnInit {
       console.log('O modal foi aberto');
     });
   }
+
 }

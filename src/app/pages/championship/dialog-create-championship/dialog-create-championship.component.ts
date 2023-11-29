@@ -90,8 +90,6 @@ export class DialogCreateChampionshipComponent implements OnInit{
         error: (error) => {
           console.error(error);
           this.toast.error(error.error.title, 'Erro', { timeOut: 3000 });
-          setTimeout(() => window.location.reload(), 3300);
-
         },
       });
   }
