@@ -1,62 +1,95 @@
 <div class="container">
   <h2 mat-dialog-title>Editar campeonato</h2>
   <mat-dialog-content>
-    <div class="row-cols-1">
-      <mat-form-field>
-        <mat-label>Nome</mat-label>
-        <input matInput placeholder="Digite o nome do campeonato" />
-      </mat-form-field>
+    <form [formGroup]="editForm" (ngSubmit)="putChampionship()">
+      <div class="row-cols-1">
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input
+            matInput
+            formControlName="nome"
+            placeholder="Digite o nome do campeonato"
+          />
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Esporte</mat-label>
-        <mat-select>
-          <mat-option value="one">Futebol</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="tipoId">
+            <mat-option
+              *ngFor="let type of championshipTypes"
+              value="{{ type.id }}"
+              >{{ type.descricao }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Data Início</mat-label>
-        <input matInput [matDatepicker]="picker5" />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker5"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker5></mat-datepicker>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Esporte</mat-label>
+          <mat-select formControlName="modalidadeId">
+            <mat-option
+              *ngFor="let modality of championshipModality"
+              value="{{ modality.id }}"
+              >{{ modality.descricao }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Data Final</mat-label>
-        <input matInput [matDatepicker]="picker6" />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker6"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker6></mat-datepicker>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data Início</mat-label>
+          <input
+            matInput
+            formControlName="dataInicio"
+            [matDatepicker]="picker5"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker5"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker5></mat-datepicker>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Data Início Inscrições</mat-label>
-        <input matInput [matDatepicker]="picker7" />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker7"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker7></mat-datepicker>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data Final</mat-label>
+          <input matInput formControlName="dataFim" [matDatepicker]="picker6" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker6"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker6></mat-datepicker>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Data Fim Inscrições</mat-label>
-        <input matInput [matDatepicker]="picker8" />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker8"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker8></mat-datepicker>
-      </mat-form-field>
-    </div>
+        <mat-form-field>
+          <mat-label>Data Início Inscrições</mat-label>
+          <input
+            matInput
+            formControlName="dataInicioInscricao"
+            [matDatepicker]="picker7"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker7"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker7></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Data Fim Inscrições</mat-label>
+          <input
+            matInput
+            formControlName="dataFimInscricao"
+            [matDatepicker]="picker8"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker8"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker8></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <mat-dialog-actions class="justify-content-end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-button type="submit">Editar</button>
+      </mat-dialog-actions>
+    </form>
   </mat-dialog-content>
-  <mat-dialog-actions class="justify-content-end">
-    <button mat-button mat-dialog-close>Cancelar</button>
-    <button mat-button>Editar</button>
-  </mat-dialog-actions>
 </div>

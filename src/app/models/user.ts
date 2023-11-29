@@ -1,8 +1,8 @@
 export interface User {
-  id: number,
-  nomeCompleto: string,
+  id: number;
+  nomeCompleto: string;
   faculdade: {
-    id: number,
-    nome: string,
+    id: number;
+    nome: string;
   }
 }

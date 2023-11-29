@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DialogCreateChampionshipComponent } from './dialog-create-championship/dialog-create-championship.component';
@@ -6,83 +6,44 @@ import { DialogEditChampionshipComponent } from './dialog-edit-championship/dial
 import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/dialog-delete-championship.component';
 import { DialogRegisterTeamChampionshipComponent } from './dialog-register-team-championship/dialog-register-team-championship.component';
 
-export interface PeriodicElement {
-  id: number;
-  descricao: string;
-  qtd_times_inscritos: string;
-  esporte: string;
-}
+import { Championship } from 'src/app/models/championship';
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    id: 1,
-    descricao: 'campeonato 1',
-    qtd_times_inscritos: '5/10',
-    esporte: 'Futebol',
-  },
-  {
-    id: 2,
-    descricao: 'campeonato 2',
-    qtd_times_inscritos: '4/10',
-    esporte: 'Futebol',
-  },
-  {
-    id: 3,
-    descricao: 'campeonato 3',
-    qtd_times_inscritos: '3/10',
-    esporte: 'Futebol',
-  },
-  {
-    id: 4,
-    descricao: 'campeonato 4',
-    qtd_times_inscritos: '2/10',
-    esporte: 'Futebol',
-  },
-  {
-    id: 5,
-    descricao: 'campeonato 5',
-    qtd_times_inscritos: '1/10',
-    esporte: 'Futebol',
-  },
-  {
-    id: 6,
-    descricao: 'campeonato 6',
-    qtd_times_inscritos: '0/10',
-    esporte: 'Futebol',
-  },
-  {
-    id: 7,
-    descricao: 'campeonato 7',
-    qtd_times_inscritos: '7/10',
-    esporte: 'Futebol',
-  },
-  {
-    id: 8,
-    descricao: 'campeonato 8',
-    qtd_times_inscritos: '8/10',
-    esporte: 'Futebol',
-  },
-  {
-    id: 9,
-    descricao: 'campeonato 9',
-    qtd_times_inscritos: '9/10',
-    esporte: 'Futebol',
-  },
-  {
-    id: 10,
-    descricao: 'campeonato 10',
-    qtd_times_inscritos: '10/10',
-    esporte: 'Futebol',
-  },
-];
+import { ChampionshipService } from './../../_services/championship/championship.service';
 
 @Component({
   selector: 'app-championship',
   templateUrl: './championship.component.html',
   styleUrls: ['./championship.component.scss'],
 })
-export class ChampionshipComponent {
-  constructor(public dialog: MatDialog) {}
+export class ChampionshipComponent implements OnInit {
+  championships: Championship[] = [];
+  championship = {} as Championship;
+
+  constructor(
+    private championshipService: ChampionshipService,
+    public dialog: MatDialog,
+  ) {}
+
+  listChampionship(): void {
+    this.championshipService.listChampionship().subscribe({
+      next: (data) => {
+        this.championships = data;
+      },
+      error: (error) => console.error(error),
+    });
+  }
+
+  getChampionshipById(id: number) {
+    this.championshipService.getChampionshipById(id).subscribe(championshipRow => {
+      this.openDialogEditChampionship(championshipRow);
+    })
+
+    return this.championship;
+  }
+
+  ngOnInit(): void {
+    this.listChampionship();
+  }
 
   openDialogCreateChampionship(): void {
     const DIALOG_CREATE = this.dialog.open(DialogCreateChampionshipComponent);
@@ -92,16 +53,20 @@ export class ChampionshipComponent {
     });
   }
 
-  openDialogEditChampionship(): void {
-    const DIALOG_EDIT = this.dialog.open(DialogEditChampionshipComponent);
+  openDialogEditChampionship(championship: any): void {
+    const DIALOG_EDIT = this.dialog.open(DialogEditChampionshipComponent, {
+      data: championship
+    });
 
     DIALOG_EDIT.afterClosed().subscribe((result) => {
       console.log('O modal foi aberto');
     });
   }
 
-  openDialogDeleteChampionship(): void {
-    const DIALOG_DELETE = this.dialog.open(DialogDeleteChampionshipComponent);
+  openDialogDeleteChampionship(id: number): void {
+    const DIALOG_DELETE = this.dialog.open(DialogDeleteChampionshipComponent, {
+      data: id
+    });
 
     DIALOG_DELETE.afterClosed().subscribe((result) => {
       console.log('O modal foi aberto');
@@ -109,12 +74,13 @@ export class ChampionshipComponent {
   }
 
   openDialogRegisterTeamChampionship(): void {
-    const DIALOG_REGISTER_TEAM = this.dialog.open(DialogRegisterTeamChampionshipComponent);
+    const DIALOG_REGISTER_TEAM = this.dialog.open(
+      DialogRegisterTeamChampionshipComponent
+    );
 
     DIALOG_REGISTER_TEAM.afterClosed().subscribe((result) => {
       console.log('O modal foi aberto');
     });
   }
 
-  dataSource = ELEMENT_DATA;
 }
