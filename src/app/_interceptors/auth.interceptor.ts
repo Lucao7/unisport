@@ -13,6 +13,7 @@ import { tap } from 'rxjs/operators';
 import { AuthService } from '../_services/auth/auth.service';
 import { StorageService } from '../_services/storage/storage.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -21,6 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
     private toast: ToastrService,
     private storageService: StorageService,
     private authService: AuthService,
+    private router: Router
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -34,7 +36,8 @@ export class AuthInterceptor implements HttpInterceptor {
       error => {
         if (error instanceof HttpErrorResponse) {
           if (error.status == 401) {
-            this.toast.error("Usuário não autorizado","Negado")
+            this.toast.error("Usuário não autorizado","Negado");
+            this.router.navigate(['/login']);
           }
         }
       })
