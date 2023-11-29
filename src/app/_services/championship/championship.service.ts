@@ -3,6 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Championship } from 'src/app/models/championship';
 import { environment } from 'src/environments/environment';
+import { ChampionshipType } from 'src/app/models/championshipType';
+import { Modality } from 'src/app/models/modality';
 
 @Injectable({
   providedIn: 'root',
@@ -25,10 +27,22 @@ export class ChampionshipService {
     });
   }
 
-  createChampionship(championship: Championship): Observable<Championship> {
-    return this.http.post<Championship>(
-      `${environment}/api/campeonato`,
+  createChampionship(championship: any): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}campeonato`,
       championship
     );
+  }
+
+  listChampionshipType(): Observable<ChampionshipType[]> {
+    return this.http.get<ChampionshipType[]>(`${environment.apiUrl}campeonato/tipo`);
+  }
+
+  listChampionshipModality(): Observable<Modality[]> {
+    return this.http.get<Modality[]>(`${environment.apiUrl}campeonato/modalidade`);
+  }
+
+  deleteChampionship(): Observable<Championship> {
+    return this.http.delete<Championship>(`${environment.apiUrl}campeonato/delete`)
   }
 }

@@ -8,6 +8,7 @@ import { DialogCreateChampionshipComponent } from './dialog-create-championship/
 import { DialogEditChampionshipComponent } from './dialog-edit-championship/dialog-edit-championship.component';
 import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/dialog-delete-championship.component';
 import { DialogRegisterTeamChampionshipComponent } from './dialog-register-team-championship/dialog-register-team-championship.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { DialogRegisterTeamChampionshipComponent } from './dialog-register-team-
     CommonModule,
     ChampionshipRoutingModule,
     AngularMaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class ChampionshipModule { }
