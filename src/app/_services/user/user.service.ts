@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { map } from 'rxjs';
 import { User } from 'src/app/models/user';
+import { Person } from 'src/app/models/person';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,14 @@ export class UserService {
 
   getUsers() {
     return this.http.get<User[]>(environment.userUrl);
+  }
+
+  getCurrentUser() {
+    return this.http.get<Person[]>(`${environment.userUrl}/logado`);
+  }
+
+  getPlayers() {
+    return this.http.get<Person[]>(environment.userUrl);
   }
 
   deleteAccount() {
