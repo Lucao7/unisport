@@ -12,6 +12,7 @@ import { Modality } from 'src/app/models/modality';
   styleUrls: ['./dialog-edit-championship.component.scss'],
 })
 export class DialogEditChampionshipComponent implements OnInit {
+
   editForm: FormGroup;
   championshipTypes: ChampionshipType[] = [];
   championshipModality: Modality[] = [];

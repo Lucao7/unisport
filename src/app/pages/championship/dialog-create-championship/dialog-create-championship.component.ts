@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ChampionshipService } from './../../../_services/championship/championship.service';
 import { ToastrService } from 'ngx-toastr';
@@ -31,7 +31,6 @@ export class DialogCreateChampionshipComponent implements OnInit{
     private championshipService: ChampionshipService,
     private toast: ToastrService
   ) {}
-
 
   ngOnInit(): void {
     this.listChampionshipTypes();
@@ -68,8 +67,10 @@ export class DialogCreateChampionshipComponent implements OnInit{
   }
 
   postChampionship() {
-    if (this.postChampionshipForm.invalid)
+    if (this.postChampionshipForm.invalid) {
       this.toast.warning('Preencha todos os campos!');
+      return
+    }
 
     const championship = {
       nome: this.postChampionshipForm.value.nome,
@@ -78,8 +79,7 @@ export class DialogCreateChampionshipComponent implements OnInit{
       dataInicio: this.postChampionshipForm.value.dataInicio,
       dataFim: this.postChampionshipForm.value.dataFim,
       dataInicioInscricao: this.postChampionshipForm.value.dataInicioInscricao,
-      dataFimInscricao: this.postChampionshipForm.value.dataFimInscricao,
-      organizadorId: 1
+      dataFimInscricao: this.postChampionshipForm.value.dataFimInscricao
     }
 
     this.championshipService.createChampionship(championship).subscribe({

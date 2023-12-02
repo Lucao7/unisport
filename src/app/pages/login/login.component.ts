@@ -36,7 +36,7 @@ export class LoginComponent {
     }
 
     let email = this.f['email'].value;
-    let password =this.f['password'].value;
+    let password = this.f['password'].value;
 
     this.authService.login(email, password)
       .pipe(first())

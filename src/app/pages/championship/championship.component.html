@@ -19,35 +19,11 @@
         <td scope="row">{{ element.inscricao.equipes?.length }}</td>
         <td scope="row">{{ element.modalidadeCampeonato.descricao }}</td>
         <td scope="row">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="edit"
-            class="link"
-            (click)="getChampionshipById(element.id)"
-          >
-          </mat-icon>
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="delete"
-            class="link"
-            (click)="openDialogDeleteChampionship(element.id)"
-          >
-          </mat-icon>
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="more_vert"
-            class="link"
-            [matMenuTriggerFor]="menu"
-          >
-          </mat-icon>
+          <mat-icon matTooltip="Editar" class="link" (click)="getChampionshipById(element.id)">edit</mat-icon>
+          <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteChampionship(element.id)">delete</mat-icon>
+          <mat-icon matTooltip="Opções" class="link" [matMenuTriggerFor]="menu">more_vert</mat-icon>
           <mat-menu #menu="matMenu">
-            <button
-              mat-menu-item
-              (click)="openDialogRegisterTeamChampionship()"
-            >
+            <button mat-menu-item (click)="openDialogRegisterTeamChampionship()">
               <mat-icon>add_box</mat-icon>
               <span>Inscrever Time</span>
             </button>
