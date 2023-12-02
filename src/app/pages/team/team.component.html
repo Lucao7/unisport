@@ -7,29 +7,34 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nome</th>
-        <th scope="col">Modalidade</th>
         <th scope="col">Faculdade</th>
         <th scope="col">Integrantes</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let element of dataSource">
+      <tr *ngFor="let element of teams">
         <td scope="row">{{ element.id }}</td>
         <td scope="row">{{ element.nome }}</td>
-        <td scope="row">{{ element.descricao }}</td>
-        <td scope="row">{{ element.faculdade }}</td>
-        <td scope="row">{{ element.integrantes }}</td>
+        <td scope="row">Fatec</td>
+        <td scope="row">{{ element.jogadores.length }}/5</td>
         <td scope="row">
-          <mat-icon aria-label="Edit" class="link">edit</mat-icon>
-          <mat-icon aria-label="Delete" class="link">delete</mat-icon>
-          <mat-icon aria-label="Opções" class="link">more_vert</mat-icon>
+          <mat-icon matTooltip="Editar" class="link" (click)="getTeamById(element.id)">edit</mat-icon>
+          <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteTeam(element.id)">delete</mat-icon>
+          <!-- <mat-icon matTooltip="Opções" class="link">more_vert</mat-icon> -->
         </td>
       </tr>
     </tbody>
   </table>
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
   <div class="row justify-content-end">
-    <button mat-icon-button aria-label="Adicionar Time">
+    <button mat-icon-button aria-label="Adicionar Time" (click)="openDialogCreateTeam()">
       <mat-icon>add</mat-icon>
     </button>
   </div>

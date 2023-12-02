@@ -1,25 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
-export interface PeriodicElement {
-  id: number;
-  nome: string;
-  descricao: string;
-  faculdade: string;
-  integrantes: string;
-}
+import { DialogCreateTeamComponent } from './dialog-create-team/dialog-create-team.component';
+import { DialogEditTeamComponent } from './dialog-edit-team/dialog-edit-team.component';
+import { DialogDeleteTeamComponent } from './dialog-delete-team/dialog-delete-team.component';
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 1, nome: 'Time A', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-  { id: 2, nome: 'Time B', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-  { id: 3, nome: 'Time C', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-  { id: 4, nome: 'Time D', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-  { id: 5, nome: 'Time E', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-  { id: 6, nome: 'Time F', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-  { id: 7, nome: 'Time G', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-  { id: 8, nome: 'Time H', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-  { id: 9, nome: 'Time I', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-  { id: 10, nome: 'Time J', descricao: 'Time de x modalidade', faculdade: 'FATEC', integrantes: '3/5' },
-];
+import { Team } from 'src/app/models/team';
+
+import { TeamService } from './../../_services/team/team.service';
 
 @Component({
   selector: 'app-team',
@@ -27,5 +15,65 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent {
-  dataSource = ELEMENT_DATA;
+  teams: Team[] = [];
+  team = {} as Team;
+
+  constructor(
+    private teamService: TeamService,
+    public dialog: MatDialog,
+  ) {}
+
+  listTeam(): void {
+    this.teamService.listTeam().subscribe({
+      next: (data) => {
+        this.teams = data;
+      },
+      error: (error) => console.error(error),
+    });
+  }
+
+  getTeamById(id: number) {
+    this.teamService.getTeamById(id).subscribe(teamRow => {
+      this.openDialogEditTeam(teamRow);
+    })
+
+    return this.team;
+  }
+
+  ngOnInit(): void {
+    this.listTeam();
+  }
+
+  openDialogCreateTeam(): void {
+    const DIALOG_CREATE = this.dialog.open(DialogCreateTeamComponent, {
+      width: '50dvw',
+    });
+
+    DIALOG_CREATE.afterClosed().subscribe((result) => {
+      console.log('O modal foi fechado');
+    });
+  }
+
+
+  openDialogEditTeam(team: any): void {
+    const DIALOG_EDIT = this.dialog.open(DialogEditTeamComponent, {
+      width: '50dvw',
+      data: team
+    });
+
+    DIALOG_EDIT.afterClosed().subscribe((result) => {
+      console.log('O modal foi fechado');
+    });
+  }
+
+
+  openDialogDeleteTeam(id: number): void {
+    const DIALOG_DELETE = this.dialog.open(DialogDeleteTeamComponent, {
+      data: id
+    });
+
+    DIALOG_DELETE.afterClosed().subscribe((result) => {
+      console.log('O modal foi fechado');
+    });
+  }
 }
