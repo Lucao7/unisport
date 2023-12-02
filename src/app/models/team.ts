@@ -4,5 +4,5 @@ export interface Team {
   id: number;
   nome: string;
   gerenteId: Person;
-  jogadoresId: Person[];
+  jogadores: Person[];
 }
