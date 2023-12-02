@@ -2,7 +2,7 @@ import { ChampionshipStatus } from './championshipStatus';
 import { Modality } from './modality';
 import { ChampionshipType } from './championshipType';
 import { Inscription } from './inscription';
-import { Organizer } from './organizer';
+import { Person } from './person';
 
 export interface Championship {
   id: number;
@@ -12,6 +12,6 @@ export interface Championship {
   statusCampeonato: ChampionshipStatus;
   dataInicio: Date;
   dataFim: Date;
-  organizador: Organizer;
+  organizador: Person;
   inscricao: Inscription;
 }
