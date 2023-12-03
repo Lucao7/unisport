@@ -28,8 +28,6 @@ export class RegisterComponent {
   ) { }
 
   registerForm: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    firstname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     birthday: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(this.minPW)]),
@@ -55,13 +53,11 @@ export class RegisterComponent {
       return;
     }
 
-    let name = this.f['name'].value;
-    let firstname = this.f['firstname'].value;
     let email = this.f['email'].value;
     let birthday = moment(this.f['birthday'].value.toString()).toISOString();
     let password = this.f['password'].value;
 
-    this.authService.register(name, firstname, email, birthday, password)
+    this.authService.register(email, birthday, password)
       .pipe(first())
         .subscribe(
           data => {

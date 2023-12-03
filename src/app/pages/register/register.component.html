@@ -13,22 +13,6 @@
     <form [formGroup]="registerForm">
       <div class="row justify-content-between">
         <mat-form-field class="col-md-6" appearance="outline">
-          <mat-icon matPrefix class="form-icon">account_circle</mat-icon>
-          <mat-label class="label">Nome</mat-label>
-          <input autofocus matInput formControlName="name" placeholder="Ex: Lucas" required>
-          <mat-error>Digite seu nome</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="col-md-6" appearance="outline">
-          <mat-icon matPrefix class="form-icon">account_circle</mat-icon>
-          <mat-label class="label">Sobrenome</mat-label>
-          <input autofocus matInput formControlName="firstname" placeholder="Ex: Ramos"  required>
-          <mat-error>Digite seu sobrenome</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="row justify-content-between">
-        <mat-form-field class="col-md-6" appearance="outline">
           <mat-icon matPrefix class="form-icon">alternate_email</mat-icon>
           <mat-label class="label">E-mail</mat-label>
           <input matInput formControlName="email" placeholder="Ex: codinglucao@gmail.com" required>
