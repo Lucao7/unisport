@@ -60,7 +60,6 @@ export class DialogCreateTeamComponent implements OnInit{
 
     const team = {
       nome: this.f['teamName'].value,
-      gerenteId: 10003,
       jogadoresId: [this.f['player1'].value, this.f['player2'].value, this.f['player3'].value, this.f['player4'].value, this.f['player5'].value]
     }
 
