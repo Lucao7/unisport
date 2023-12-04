@@ -46,40 +46,29 @@ export class ChampionshipComponent implements OnInit {
   }
 
   openDialogCreateChampionship(): void {
-    const DIALOG_CREATE = this.dialog.open(DialogCreateChampionshipComponent);
-
-    DIALOG_CREATE.afterClosed().subscribe((result) => {
-      console.log('O modal foi aberto');
+    const DIALOG_CREATE = this.dialog.open(DialogCreateChampionshipComponent, {
+      width: '50dvw'
     });
   }
 
   openDialogEditChampionship(championship: any): void {
     const DIALOG_EDIT = this.dialog.open(DialogEditChampionshipComponent, {
+      width: '50dvw',
       data: championship
-    });
-
-    DIALOG_EDIT.afterClosed().subscribe((result) => {
-      console.log('O modal foi aberto');
     });
   }
 
   openDialogDeleteChampionship(id: number): void {
     const DIALOG_DELETE = this.dialog.open(DialogDeleteChampionshipComponent, {
+      width: '50dvw',
       data: id
-    });
-
-    DIALOG_DELETE.afterClosed().subscribe((result) => {
-      console.log('O modal foi aberto');
     });
   }
 
-  openDialogRegisterTeamChampionship(): void {
-    const DIALOG_REGISTER_TEAM = this.dialog.open(
-      DialogRegisterTeamChampionshipComponent
-    );
-
-    DIALOG_REGISTER_TEAM.afterClosed().subscribe((result) => {
-      console.log('O modal foi aberto');
+  openDialogRegisterTeamChampionship(id: number): void {
+    const DIALOG_REGISTER_TEAM = this.dialog.open(DialogRegisterTeamChampionshipComponent, {
+      width: '50dvw',
+      data: id
     });
   }
 

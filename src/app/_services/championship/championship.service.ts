@@ -21,30 +21,30 @@ export class ChampionshipService {
   }
 
   listChampionshipType(): Observable<ChampionshipType[]> {
-    return this.http.get<ChampionshipType[]>(
-      `${environment.apiUrl}campeonato/tipo`
-    );
+    return this.http.get<ChampionshipType[]>(`${environment.apiUrl}campeonato/tipo`);
   }
 
   listChampionshipModality(): Observable<Modality[]> {
-    return this.http.get<Modality[]>(
-      `${environment.apiUrl}campeonato/modalidade`
-    );
+    return this.http.get<Modality[]>(`${environment.apiUrl}campeonato/modalidade`);
   }
 
   deleteChampionship(id: number): Observable<Championship> {
-    return this.http.delete<Championship>(
-      `${environment.apiUrl}campeonato/${id.toString()}`
-    );
+    return this.http.delete<Championship>(`${environment.apiUrl}campeonato/${id.toString()}`);
   }
 
   getChampionshipById(id: number): Observable<Championship> {
-    return this.http.get<Championship>(
-      `${environment.apiUrl}campeonato/${id.toString()}`
-    );
+    return this.http.get<Championship>(`${environment.apiUrl}campeonato/${id.toString()}`);
   }
 
   updateChampionship(championship: any): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}campeonato`, championship);
+  }
+
+  insertTeam(championshipId: number, teamId: number): Observable<any> {
+    const newCompetitor = {
+      campeonatoId: championshipId,
+      equipeId: teamId
+    };
+    return this.http.put<any>(`${environment.apiUrl}campeonato/inscrever`, newCompetitor);
   }
 }
