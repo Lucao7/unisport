@@ -76,7 +76,10 @@ export class DialogEditChampionshipComponent implements OnInit {
   }
 
   putChampionship(): void {
-    if (this.editForm.invalid) this.toast.warning('Preencha todos os campos!');
+    if (this.editForm.invalid) {
+      this.toast.warning('Preencha todos os campos!');
+      return;
+    }
 
     const championship = {
       id: this.idToEdit,
