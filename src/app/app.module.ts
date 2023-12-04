@@ -9,11 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { LoadingInterceptorProvider } from './_interceptors/loading/loading.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,13 +25,14 @@ import { ToastrModule } from 'ngx-toastr';
     AngularMaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       closeButton: true,
       progressBar: true
     })
   ],
-  providers: [ AuthInterceptorProvider ],
+  providers: [ LoadingInterceptorProvider, AuthInterceptorProvider ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

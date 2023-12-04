@@ -1,3 +1,5 @@
-<app-toolbar *ngIf="isLogged()"></app-toolbar>
 <!-- <app-toolbar></app-toolbar> -->
-<router-outlet></router-outlet>
+<app-spinner></app-spinner>
+<app-toolbar *ngIf="isLogged()"></app-toolbar>
+<router-outlet>
+</router-outlet>
