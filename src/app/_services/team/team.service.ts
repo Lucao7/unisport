@@ -12,22 +12,22 @@ export class TeamService {
   constructor(private http: HttpClient) {}
 
   listTeam(): Observable<Team[]> {
-    return this.http.get<Team[]>(`${environment.apiUrl}equipe`);
+    return this.http.get<Team[]>(`${environment.teamUrl}`);
   }
 
   createTeam(team: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}equipe`, team);
+    return this.http.post<any>(`${environment.teamUrl}`, team);
   }
 
   deleteTeam(id: number): Observable<Team> {
-    return this.http.delete<Team>(`${environment.apiUrl}equipe/${id.toString()}`);
+    return this.http.delete<Team>(`${environment.teamUrl}/${id.toString()}`);
   }
 
   getTeamById(id: number): Observable<Team> {
-    return this.http.get<Team>(`${environment.apiUrl}equipe/${id.toString()}`);
+    return this.http.get<Team>(`${environment.teamUrl}/${id.toString()}`);
   }
 
   updateTeam(team: any): Observable<any> {
-    return this.http.put<any>(`${environment.apiUrl}equipe`, team);
+    return this.http.put<any>(`${environment.teamUrl}`, team);
   }
 }
