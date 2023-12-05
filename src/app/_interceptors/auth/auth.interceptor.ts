@@ -10,8 +10,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { AuthService } from '../_services/auth/auth.service';
-import { StorageService } from '../_services/storage/storage.service';
+import { AuthService } from '../../_services/auth/auth.service';
+import { StorageService } from '../../_services/storage/storage.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
