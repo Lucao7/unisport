@@ -3,6 +3,7 @@ import { Modality } from './modality';
 import { ChampionshipType } from './championshipType';
 import { Inscription } from './inscription';
 import { Person } from './person';
+import { Match } from './match';
 
 export interface Championship {
   id: number;
@@ -14,4 +15,6 @@ export interface Championship {
   dataFim: Date;
   organizador: Person;
   inscricao: Inscription;
+  quantidadeRodadas: number;
+  partidas?: Match[];
 }
