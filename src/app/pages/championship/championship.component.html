@@ -27,7 +27,11 @@
               <mat-icon>add_box</mat-icon>
               <span>Inscrever Time</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="generateChampionshipMatches(element.id)">
+              <mat-icon>table_view</mat-icon>
+              <span>Gerar Partidas</span>
+            </button>
+            <button mat-menu-item routerLink="/partidas/{{element.id}}">
               <mat-icon>table_view</mat-icon>
               <span>Ver Partidas</span>
             </button>

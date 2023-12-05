@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
-import { DialogCreateChampionshipComponent } from './dialog-create-championship/dialog-create-championship.component';
-import { DialogEditChampionshipComponent } from './dialog-edit-championship/dialog-edit-championship.component';
-import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/dialog-delete-championship.component';
-import { DialogRegisterTeamChampionshipComponent } from './dialog-register-team-championship/dialog-register-team-championship.component';
-
+import { ToastrService } from 'ngx-toastr';
 import { Championship } from 'src/app/models/championship';
 
 import { ChampionshipService } from './../../_services/championship/championship.service';
+import { DialogCreateChampionshipComponent } from './dialog-create-championship/dialog-create-championship.component';
+import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/dialog-delete-championship.component';
+import { DialogEditChampionshipComponent } from './dialog-edit-championship/dialog-edit-championship.component';
+import {
+  DialogRegisterTeamChampionshipComponent,
+} from './dialog-register-team-championship/dialog-register-team-championship.component';
 
 @Component({
   selector: 'app-championship',
@@ -22,6 +23,7 @@ export class ChampionshipComponent implements OnInit {
   constructor(
     private championshipService: ChampionshipService,
     public dialog: MatDialog,
+    private toast: ToastrService
   ) {}
 
   listChampionship(): void {
@@ -39,6 +41,15 @@ export class ChampionshipComponent implements OnInit {
     })
 
     return this.championship;
+  }
+
+  generateChampionshipMatches(championshipId: number) {
+    this.championshipService.generateMatches(championshipId).subscribe({
+      next: (data) => {
+        this.toast.success('Partidas geradas com sucesso!', 'Ok');
+      },
+      error: (error) => console.error(error),
+    });
   }
 
   ngOnInit(): void {
