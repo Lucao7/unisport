@@ -23,20 +23,6 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Data Início</mat-label>
-          <input matInput formControlName="dataInicio" [matDatepicker]="picker1"/>
-          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Data Final</mat-label>
-          <input matInput formControlName="dataFim" [matDatepicker]="picker2" />
-          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field>
           <mat-label>Data Início Inscrições</mat-label>
           <input matInput formControlName="dataInicioInscricao" [matDatepicker]="picker3"/>
           <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
@@ -48,6 +34,20 @@
           <input matInput formControlName="dataFimInscricao" [matDatepicker]="picker4"/>
           <mat-datepicker-toggle matIconSuffix [for]="picker4"></mat-datepicker-toggle>
           <mat-datepicker #picker4></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Data Início Partidas</mat-label>
+          <input matInput formControlName="dataInicio" [matDatepicker]="picker1"/>
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Data Final Partidas</mat-label>
+          <input matInput formControlName="dataFim" [matDatepicker]="picker2" />
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
       </div>
       <mat-dialog-actions class="justify-content-end">
