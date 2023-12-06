@@ -17,7 +17,8 @@ import {
   styleUrls: ['./championship.component.scss'],
 })
 export class ChampionshipComponent implements OnInit {
-  championships: Championship[] = [];
+  championshipsOpenInscription: Championship[] = [];
+  championshipsClosedInscription: Championship[] = [];
   championship = {} as Championship;
 
   constructor(
@@ -26,10 +27,19 @@ export class ChampionshipComponent implements OnInit {
     private toast: ToastrService
   ) {}
 
-  listChampionship(): void {
-    this.championshipService.listChampionship().subscribe({
+  listChampionshipOpenInscription(): void {
+    this.championshipService.listChampionship(true).subscribe({
       next: (data) => {
-        this.championships = data;
+        this.championshipsOpenInscription = data;
+      },
+      error: (error) => console.error(error),
+    });
+  }
+
+  listChampionshipClosedInscription(): void {
+    this.championshipService.listChampionship(false).subscribe({
+      next: (data) => {
+        this.championshipsClosedInscription = data;
       },
       error: (error) => console.error(error),
     });
@@ -53,7 +63,8 @@ export class ChampionshipComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listChampionship();
+    this.listChampionshipOpenInscription();
+    this.listChampionshipClosedInscription();
   }
 
   openDialogCreateChampionship(): void {

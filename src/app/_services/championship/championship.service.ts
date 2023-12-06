@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
@@ -16,8 +16,10 @@ export class ChampionshipService {
     private router: Router,
   ) { }
 
-  listChampionship(): Observable<Championship[]> {
-    return this.http.get<Championship[]>(`${environment.championshipUrl}`);
+  listChampionship(openInscription: boolean): Observable<Championship[]> {
+    let params = new HttpParams().set('inscricoesAbertas', openInscription);
+
+    return this.http.get<Championship[]>(`${environment.championshipUrl}`, { params });
   }
 
   createChampionship(championship: any): Observable<any> {
