@@ -14,7 +14,8 @@ import { DashboardCardComponent } from 'src/app/components/dashboard-card/dashbo
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    AngularMaterialModule
   ]
 })
 export class DashboardModule { }
