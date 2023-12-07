@@ -1,5 +1,5 @@
 export interface Person {
-  id: bigint;
+  id: number;
   email: string;
   admin: boolean;
 }
