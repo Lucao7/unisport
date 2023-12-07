@@ -67,21 +67,22 @@ export class DialogEditTeamComponent implements OnInit {
     }
 
     const team = {
-      nome: this.f['teamName'].value,
-      gerenteId: this.data.gerente['id'],
-      jogadoresId: [this.f['player1'].value, this.f['player2'].value, this.f['player3'].value, this.f['player4'].value, this.f['player5'].value]
+      id: this.idToEdit,
+      nome: this.f['teamName'].value
     }
 
     this.teamService.updateTeam(team).subscribe({
       next: (data) => {
-        this.toast.success('Campeonato atualizado com sucesso!', 'Ok', {
+        this.toast.success('Time atualizado com sucesso!', 'Ok', {
           timeOut: 3000,
         });
         setTimeout(() => window.location.reload(), 3300);
       },
       error: (error) => {
         console.error(error);
-        this.toast.error(error.error.title, 'Erro', { timeOut: 3000 });
+        error.error.mensagensErro.forEach((erro: string | undefined) => {
+          this.toast.error(erro, error.status + ' - ' + error.statusText, { timeOut: 3000 });
+        });
       },
     });
   }
