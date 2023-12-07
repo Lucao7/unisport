@@ -49,7 +49,9 @@ export class DialogDefineWinnerComponent {
       },
       error: (error) => {
         console.error(error);
-        this.toast.error(error.error.title, 'Erro', { timeOut: 3000 });
+        error.error.mensagensErro.forEach((erro: string | undefined) => {
+          this.toast.error(erro, error.status + ' - ' + error.statusText, { timeOut: 3000 });
+        });
       },
     });
   }
