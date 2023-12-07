@@ -36,7 +36,14 @@ export class AuthService {
     .pipe(map(data => {
       this._isLoggedIn.next(true);
       this.storageService.setToken(data);
+      this.setCurrentUser();
     }));
+  }
+
+  setCurrentUser() {
+    return this.http.get(`${environment.userUrl}/logado`).subscribe((data) => {
+      this.storageService.setUser(data);
+    });
   }
 
   register(email: string, birthday: string, password: string): Observable<any> {
