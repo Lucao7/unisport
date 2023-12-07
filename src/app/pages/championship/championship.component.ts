@@ -38,7 +38,6 @@ export class ChampionshipComponent implements OnInit {
   getUserInfo(): void {
     this.userId = this.userService.getCurrentUser().id;
     this.isAdmin = this.userService.getCurrentUser().admin;
-    console.log(this.userId, this.isAdmin)
   }
 
   listChampionships(): void {
