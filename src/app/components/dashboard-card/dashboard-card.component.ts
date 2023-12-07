@@ -17,7 +17,10 @@ export class DashboardCardComponent {
   ) { }
 
   @Input() cardTitle: string = '';
+  @Input() cardSubtitle: string = '';
+  @Input() cardIcon: string = '';
   @Input() cardImagePath: string = '';
+  @Input() cardImageAlt: string = '';
   @Input() cardRouterLink: string = '';
   @Input() cardDialogLink: string = '';
 

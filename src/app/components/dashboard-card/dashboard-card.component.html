@@ -1,6 +1,7 @@
-<div class="col card-dashboard link" (click)="onClick()">
-  <img src="{{cardImagePath}}" alt="{{cardImagePath}}">
-  <p>
-    <strong>{{cardTitle}}</strong>
-  </p>
-</div>
+<mat-card class="col card-dashboard link" (click)="onClick()">
+    <mat-card-header class="justify-content-center">
+        <mat-card-title><mat-icon class="alinhado">{{cardIcon}}</mat-icon> {{cardTitle}}</mat-card-title>
+        <mat-card-subtitle>{{cardSubtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <img matCardImage src="{{cardImagePath}}">
+</mat-card>
