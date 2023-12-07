@@ -36,7 +36,7 @@
 
           <div class="row" *ngFor="let number of [1,2,3,4,5]">
             <mat-form-field appearance="outline">
-              <mat-label>Nome do {{number}}º Integrante</mat-label>
+              <mat-label>E-mail do {{number}}º Integrante</mat-label>
               <input matInput type="number" formControlName="player{{number}}" [matAutocomplete]="auto" required>
               <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                 <mat-option *ngFor="let player of players" value="{{ player.id }}">{{ player.email }}</mat-option>
