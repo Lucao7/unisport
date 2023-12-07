@@ -19,8 +19,8 @@
         <td scope="row">Fatec</td>
         <td scope="row">{{ element.jogadores.length }}/5</td>
         <td scope="row">
-          <mat-icon matTooltip="Editar" class="link" (click)="getTeamById(element.id)">edit</mat-icon>
-          <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteTeam(element.id)">delete</mat-icon>
+          <mat-icon matTooltip="Editar" class="link" (click)="getTeamById(element.id)" *ngIf="isAdmin || (userId == element.gerente.id)">edit</mat-icon>
+          <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteTeam(element.id)" *ngIf="isAdmin || (userId == element.gerente.id)">delete</mat-icon>
           <!-- <mat-icon matTooltip="Opções" class="link">more_vert</mat-icon> -->
         </td>
       </tr>
@@ -28,8 +28,8 @@
   </table>
   <ng-template class="row" #noCreatedTeams>Sem times criados ainda!</ng-template>
   <mat-paginator *ngIf="teams.length >= 1;"
-    [length]="100"
-    [pageSize]="10"
+    [length]="teams.length"
+    [pageSize]="teams.length"
     [pageSizeOptions]="[5, 10, 25, 100]"
     aria-label="Select page"
   >

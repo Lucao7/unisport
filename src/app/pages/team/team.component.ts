@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
-import { DialogCreateTeamComponent } from './dialog-create-team/dialog-create-team.component';
-import { DialogEditTeamComponent } from './dialog-edit-team/dialog-edit-team.component';
-import { DialogDeleteTeamComponent } from './dialog-delete-team/dialog-delete-team.component';
-
+import { UserService } from 'src/app/_services/user/user.service';
 import { Team } from 'src/app/models/team';
 
 import { TeamService } from './../../_services/team/team.service';
+import { DialogCreateTeamComponent } from './dialog-create-team/dialog-create-team.component';
+import { DialogDeleteTeamComponent } from './dialog-delete-team/dialog-delete-team.component';
+import { DialogEditTeamComponent } from './dialog-edit-team/dialog-edit-team.component';
 
 @Component({
   selector: 'app-team',
@@ -15,13 +14,31 @@ import { TeamService } from './../../_services/team/team.service';
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent {
+
+  userId: number = 0;
+  isAdmin: boolean = false;
   teams: Team[] = [];
   team = {} as Team;
 
   constructor(
     private teamService: TeamService,
+    private userService: UserService,
     public dialog: MatDialog,
   ) {}
+
+  ngOnInit(): void {
+    this.getUserInfo();
+    this.listTeam();
+  }
+
+  teste(element: any) {
+    console.log(element);
+  }
+
+  getUserInfo(): void {
+    this.userId = this.userService.getCurrentUser().id;
+    this.isAdmin = this.userService.getCurrentUser().admin;
+  }
 
   listTeam(): void {
     this.teamService.listTeam().subscribe({
@@ -40,10 +57,6 @@ export class TeamComponent {
     return this.team;
   }
 
-  ngOnInit(): void {
-    this.listTeam();
-  }
-
   openDialogCreateTeam(): void {
     const DIALOG_CREATE = this.dialog.open(DialogCreateTeamComponent, {
       width: '50dvw',
@@ -53,7 +66,6 @@ export class TeamComponent {
       console.log('O modal foi fechado');
     });
   }
-
 
   openDialogEditTeam(team: any): void {
     const DIALOG_EDIT = this.dialog.open(DialogEditTeamComponent, {
@@ -65,7 +77,6 @@ export class TeamComponent {
       console.log('O modal foi fechado');
     });
   }
-
 
   openDialogDeleteTeam(id: number): void {
     const DIALOG_DELETE = this.dialog.open(DialogDeleteTeamComponent, {

@@ -22,7 +22,7 @@
           <ng-template #noWinnerYet>-</ng-template>
         </td>
         <td scope="row">
-          <mat-icon matTooltip="Definir Vencedor" class="link" (click)="openDialogDefineWinner(match)">edit</mat-icon>
+          <mat-icon matTooltip="Definir Vencedor" class="link" (click)="openDialogDefineWinner(match)" *ngIf="isAdmin || (userId == championshipOwnerId)">edit</mat-icon>
         </td>
       </tr>
     </tbody>

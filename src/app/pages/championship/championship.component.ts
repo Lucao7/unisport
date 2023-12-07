@@ -5,11 +5,10 @@ import { Championship } from 'src/app/models/championship';
 
 import { ChampionshipService } from './../../_services/championship/championship.service';
 import { DialogCreateChampionshipComponent } from './dialog-create-championship/dialog-create-championship.component';
-import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/dialog-delete-championship.component';
 import { DialogEditChampionshipComponent } from './dialog-edit-championship/dialog-edit-championship.component';
-import {
-  DialogRegisterTeamChampionshipComponent,
-} from './dialog-register-team-championship/dialog-register-team-championship.component';
+import { DialogDeleteChampionshipComponent } from './dialog-delete-championship/dialog-delete-championship.component';
+import { DialogRegisterTeamChampionshipComponent } from './dialog-register-team-championship/dialog-register-team-championship.component';
+import { UserService } from 'src/app/_services/user/user.service';
 
 @Component({
   selector: 'app-championship',
@@ -17,15 +16,30 @@ import {
   styleUrls: ['./championship.component.scss'],
 })
 export class ChampionshipComponent implements OnInit {
+
+  userId: number = 0;
+  isAdmin: boolean = false;
   championshipsOpenInscription: Championship[] = [];
   championshipsClosedInscription: Championship[] = [];
   championship = {} as Championship;
 
   constructor(
     private championshipService: ChampionshipService,
+    private userService: UserService,
     public dialog: MatDialog,
     private toast: ToastrService
-  ) {}
+  ) { }
+
+  ngOnInit(): void {
+    this.getUserInfo();
+    this.listChampionships();
+  }
+
+  getUserInfo(): void {
+    this.userId = this.userService.getCurrentUser().id;
+    this.isAdmin = this.userService.getCurrentUser().admin;
+    console.log(this.userId, this.isAdmin)
+  }
 
   listChampionships(): void {
     this.championshipService.listChampionship(true).subscribe({
@@ -57,10 +71,6 @@ export class ChampionshipComponent implements OnInit {
       },
       error: (error) => console.error(error),
     });
-  }
-
-  ngOnInit(): void {
-    this.listChampionships();
   }
 
   openDialogCreateChampionship(): void {

@@ -21,8 +21,8 @@
             <td scope="row">{{ element.inscricao.equipes?.length }}</td>
             <td scope="row">{{ element.modalidadeCampeonato.descricao }}</td>
             <td scope="row">
-              <mat-icon matTooltip="Editar" class="link" (click)="getChampionshipById(element.id)">edit</mat-icon>
-              <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteChampionship(element.id)">delete</mat-icon>
+              <mat-icon matTooltip="Editar" class="link" (click)="getChampionshipById(element.id)" *ngIf="isAdmin || (userId == element.organizador.id)">edit</mat-icon>
+              <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteChampionship(element.id)" *ngIf="isAdmin || (userId == element.organizador.id)">delete</mat-icon>
               <mat-icon matTooltip="Opções" class="link" [matMenuTriggerFor]="menu" >more_vert</mat-icon>
               <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="openDialogRegisterTeamChampionship(element.id)">
@@ -62,8 +62,8 @@
             <td scope="row">{{ element.inscricao.equipes?.length }}</td>
             <td scope="row">{{ element.modalidadeCampeonato.descricao }}</td>
             <td scope="row">
-              <mat-icon matTooltip="Editar" class="link" (click)="getChampionshipById(element.id)" >edit</mat-icon>
-              <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteChampionship(element.id)">delete</mat-icon>
+              <mat-icon matTooltip="Editar" class="link" (click)="getChampionshipById(element.id)" *ngIf="isAdmin || (userId == element.organizador.id)">edit</mat-icon>
+              <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteChampionship(element.id)" *ngIf="isAdmin || (userId == element.organizador.id)">delete</mat-icon>
               <mat-icon matTooltip="Opções" class="link" [matMenuTriggerFor]="menu">more_vert</mat-icon>
               <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="generateChampionshipMatches(element.id)">
