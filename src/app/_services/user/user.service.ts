@@ -23,7 +23,7 @@ export class UserService {
     return this.http.get<User[]>(environment.userUrl);
   }
 
-  getCurrentUser(): User {
+  getCurrentUser(): Person {
     return this.storageService.getUser();
   }
 
