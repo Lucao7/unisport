@@ -27,16 +27,13 @@ export class ChampionshipComponent implements OnInit {
     private toast: ToastrService
   ) {}
 
-  listChampionshipOpenInscription(): void {
+  listChampionships(): void {
     this.championshipService.listChampionship(true).subscribe({
       next: (data) => {
         this.championshipsOpenInscription = data;
       },
       error: (error) => console.error(error),
     });
-  }
-
-  listChampionshipClosedInscription(): void {
     this.championshipService.listChampionship(false).subscribe({
       next: (data) => {
         this.championshipsClosedInscription = data;
@@ -63,8 +60,7 @@ export class ChampionshipComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listChampionshipOpenInscription();
-    this.listChampionshipClosedInscription();
+    this.listChampionships();
   }
 
   openDialogCreateChampionship(): void {
