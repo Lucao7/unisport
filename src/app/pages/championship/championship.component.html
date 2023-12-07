@@ -4,7 +4,7 @@
   </div>
   <mat-tab-group>
     <mat-tab label="Inscrições Abertas">
-      <table class="table table-striped mt-3 mat-elevation-z2">
+      <table class="table table-striped mt-3 mat-elevation-z2" *ngIf="championshipsOpenInscription.length >= 1; else noOpenChampionships">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -21,29 +21,11 @@
             <td scope="row">{{ element.inscricao.equipes?.length }}</td>
             <td scope="row">{{ element.modalidadeCampeonato.descricao }}</td>
             <td scope="row">
-              <mat-icon
-                matTooltip="Editar"
-                class="link"
-                (click)="getChampionshipById(element.id)"
-                >edit</mat-icon
-              >
-              <mat-icon
-                matTooltip="Deletar"
-                class="link"
-                (click)="openDialogDeleteChampionship(element.id)"
-                >delete</mat-icon
-              >
-              <mat-icon
-                matTooltip="Opções"
-                class="link"
-                [matMenuTriggerFor]="menu"
-                >more_vert</mat-icon
-              >
+              <mat-icon matTooltip="Editar" class="link" (click)="getChampionshipById(element.id)">edit</mat-icon>
+              <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteChampionship(element.id)">delete</mat-icon>
+              <mat-icon matTooltip="Opções" class="link" [matMenuTriggerFor]="menu" >more_vert</mat-icon>
               <mat-menu #menu="matMenu">
-                <button
-                  mat-menu-item
-                  (click)="openDialogRegisterTeamChampionship(element.id)"
-                >
+                <button mat-menu-item (click)="openDialogRegisterTeamChampionship(element.id)">
                   <mat-icon>add_box</mat-icon>
                   <span>Inscrever Time</span>
                 </button>
@@ -52,10 +34,18 @@
           </tr>
         </tbody>
       </table>
+      <ng-template class="row" #noOpenChampionships>Sem campeonatos com inscrições abertas!</ng-template>
+      <mat-paginator *ngIf="championshipsOpenInscription.length >= 1"
+        [length]="championshipsOpenInscription.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </mat-tab>
 
     <mat-tab label="Inscrições Fechadas">
-      <table class="table table-striped mt-3 mat-elevation-z2">
+      <table class="table table-striped mt-3 mat-elevation-z2" *ngIf="championshipsClosedInscription.length >= 1 else noClosedChampionships">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -72,33 +62,15 @@
             <td scope="row">{{ element.inscricao.equipes?.length }}</td>
             <td scope="row">{{ element.modalidadeCampeonato.descricao }}</td>
             <td scope="row">
-              <mat-icon
-                matTooltip="Editar"
-                class="link"
-                (click)="getChampionshipById(element.id)"
-                >edit</mat-icon
-              >
-              <mat-icon
-                matTooltip="Deletar"
-                class="link"
-                (click)="openDialogDeleteChampionship(element.id)"
-                >delete</mat-icon
-              >
-              <mat-icon
-                matTooltip="Opções"
-                class="link"
-                [matMenuTriggerFor]="menu"
-                >more_vert</mat-icon
-              >
+              <mat-icon matTooltip="Editar" class="link" (click)="getChampionshipById(element.id)" >edit</mat-icon>
+              <mat-icon matTooltip="Deletar" class="link" (click)="openDialogDeleteChampionship(element.id)">delete</mat-icon>
+              <mat-icon matTooltip="Opções" class="link" [matMenuTriggerFor]="menu">more_vert</mat-icon>
               <mat-menu #menu="matMenu">
-                <button
-                  mat-menu-item
-                  (click)="generateChampionshipMatches(element.id)"
-                >
+                <button mat-menu-item (click)="generateChampionshipMatches(element.id)">
                   <mat-icon>table_view</mat-icon>
                   <span>Gerar Partidas</span>
                 </button>
-                <button mat-menu-item routerLink="/partidas/{{ element.id }}">
+                <button mat-menu-item routerLink="/match/{{ element.id }}">
                   <mat-icon>table_view</mat-icon>
                   <span>Ver Partidas</span>
                 </button>
@@ -107,21 +79,18 @@
           </tr>
         </tbody>
       </table>
+      <ng-template class="row" #noClosedChampionships>Sem campeonatos com inscrições fechadas!</ng-template>
+      <mat-paginator *ngIf="championshipsClosedInscription.length >= 1"
+        [length]="championshipsClosedInscription.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </mat-tab>
   </mat-tab-group>
-  <mat-paginator
-    [length]="100"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page"
-  >
-  </mat-paginator>
   <div class="row justify-content-end">
-    <button
-      mat-icon-button
-      aria-label="Adicionar Time"
-      (click)="openDialogCreateChampionship()"
-    >
+    <button mat-icon-button aria-label="Adicionar Time" (click)="openDialogCreateChampionship()">
       <mat-icon>add</mat-icon>
     </button>
   </div>

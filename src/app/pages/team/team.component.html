@@ -2,7 +2,7 @@
   <div class="row mt-3">
     <h1><b>Times</b></h1>
   </div>
-  <table class="table table-striped mt-3 mat-elevation-z2">
+  <table class="table table-striped mt-3 mat-elevation-z2" *ngIf="teams.length >= 1; else noCreatedTeams">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -26,7 +26,8 @@
       </tr>
     </tbody>
   </table>
-  <mat-paginator
+  <ng-template class="row" #noCreatedTeams>Sem times criados ainda!</ng-template>
+  <mat-paginator *ngIf="teams.length >= 1;"
     [length]="100"
     [pageSize]="10"
     [pageSizeOptions]="[5, 10, 25, 100]"
