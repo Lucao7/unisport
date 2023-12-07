@@ -39,12 +39,12 @@ export class MatchComponent implements OnInit {
       },
       error: (error) => console.error(error),
     });
+    this.getUserInfo();
   }
 
   getUserInfo(): void {
     this.userId = this.userService.getCurrentUser().id;
     this.isAdmin = this.userService.getCurrentUser().admin;
-    console.log(this.userId, this.isAdmin)
   }
 
   openDialogDefineWinner(match: Match): void {
