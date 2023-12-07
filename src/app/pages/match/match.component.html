@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-3">
-    <h1><b>Partidas - Campeonato {{ championshipName }}</b></h1>
+    <h1><b>Partidas - {{ championshipName }}</b></h1>
   </div>
   <table class="table table-striped mt-3" *ngIf="matches.length >= 1; else noMatchesFound">
     <thead>
@@ -15,8 +15,14 @@
     <tbody>
       <tr *ngFor="let match of matches">
         <td scope="row">{{ match.id }}</td>
-        <td scope="row">{{ match.equipeA.nome }}</td>
-        <td scope="row">{{ match.equipeB.nome }}</td>
+        <td scope="row">
+          <div *ngIf="match.equipeA; else noTeamAYet">{{match.equipeA.nome}}</div>
+          <ng-template #noTeamAYet>-</ng-template>
+        </td>
+        <td scope="row">
+          <div *ngIf="match.equipeB; else noTeamBYet">{{match.equipeB.nome}}</div>
+          <ng-template #noTeamBYet>-</ng-template>
+        </td>
         <td scope="row">
           <div *ngIf="match.equipeVencedora; else noWinnerYet">{{match.equipeVencedora.nome}}</div>
           <ng-template #noWinnerYet>-</ng-template>
