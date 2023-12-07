@@ -17,7 +17,10 @@
         <td scope="row">{{ match.id }}</td>
         <td scope="row">{{ match.equipeA.nome }}</td>
         <td scope="row">{{ match.equipeB.nome }}</td>
-        <td scope="row">{{ match.equipeVencedora.nome }}</td>
+        <td scope="row">
+          <div *ngIf="match.equipeVencedora; else noWinnerYet">{{match.equipeVencedora.nome}}</div>
+          <ng-template #noWinnerYet>-</ng-template>
+        </td>
         <td scope="row">
           <mat-icon matTooltip="Definir Vencedor" class="link" (click)="openDialogDefineWinner(match)">edit</mat-icon>
         </td>
@@ -26,7 +29,7 @@
   </table>
 
   <mat-paginator
-    [length]="100"
+    [length]="matches.length"
     [pageSize]="10"
     [pageSizeOptions]="[5, 10, 25, 100]"
     aria-label="Select page"

@@ -57,7 +57,11 @@ export class ChampionshipService {
   generateMatches(championshipId: number): Observable<any> {
     return this.http.post<any>(`${environment.championshipUrl}/gerar-partidas/${championshipId.toString()}`, null)
     .pipe(map(data => {
-      this.router.navigate(['/partida/', championshipId]);
+      this.router.navigate(['/match', championshipId]);
     }));
+  }
+
+  selectMatchWinner(matchWinner: any): Observable<any> {
+    return this.http.post<any>(`${environment.championshipUrl}/partida/vencedor`, matchWinner);
   }
 }
